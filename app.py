@@ -140,14 +140,39 @@ def horoscope_results():
     """Shows the user the result for their chosen horoscope."""
 
     # TODO: Get the sign the user entered in the form, based on their birthday
-    horoscope_sign = request.args.get('number1')
+    horoscope_sign = request.args.get('horoscope_sign')
 
     # TODO: Look up the user's personality in the HOROSCOPE_PERSONALITIES
     # dictionary based on what the user entered
-    users_personality = ''
+    if horoscope_sign == 'aries':
+        users_personality = 'Adventerous and Energetic'
+    elif horoscope_sign == 'taurus':
+        users_personality = 'Patient and reliable'
+    elif horoscope_sign == 'gemini':
+        users_personality = 'Adaptable and versatile'
+    elif horoscope_sign == 'cancer':
+        users_personality = 'Emotional and loving'
+    elif horoscope_sign == 'leo':
+        users_personality = 'Generous and warmhearted'
+    elif horoscope_sign == 'virgo':
+        users_personality = 'Modest and Shy'
+    elif horoscope_sign == 'libra':
+        users_personality = 'Easygoing and sociable'
+    elif horoscope_sign == 'scorpio':
+        users_personality = 'Determined and forceful'
+    elif horoscope_sign == 'sagittarius':
+        users_personality = 'Intellectual and philosophical'
+    elif horoscope_sign == 'capricorn':
+        users_personality = 'Practical and prudent'
+    elif horoscope_sign == 'aquarius':
+        users_personality = 'Friendly and humanitarian'
+    elif horoscope_sign == 'pisces':
+        users_personality = 'Imaginative and sensitive'
+
+    
 
     # TODO: Generate a random number from 1 to 99
-    lucky_number = 0
+    lucky_number = randint(1,100)
 
     context = {
         'horoscope_sign': horoscope_sign,
