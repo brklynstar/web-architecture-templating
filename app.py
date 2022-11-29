@@ -140,35 +140,35 @@ def horoscope_results():
     """Shows the user the result for their chosen horoscope."""
 
     # TODO: Get the sign the user entered in the form, based on their birthday
-    user_name = request.args.get('user_name')
+    users_name = request.args.get('users_name')
     horoscope_sign = request.args.get('horoscope_sign')
 
     # TODO: Look up the user's personality in the HOROSCOPE_PERSONALITIES
     # dictionary based on what the user entered
     if horoscope_sign == 'aries':
-        users_personality = 'Adventerous and Energetic'
+        users_personality = 'adventerous and Energetic'
     elif horoscope_sign == 'taurus':
-        users_personality = 'Patient and reliable'
+        users_personality = 'patient and reliable'
     elif horoscope_sign == 'gemini':
-        users_personality = 'Adaptable and versatile'
+        users_personality = 'adaptable and versatile'
     elif horoscope_sign == 'cancer':
-        users_personality = 'Emotional and loving'
+        users_personality = 'emotional and loving'
     elif horoscope_sign == 'leo':
-        users_personality = 'Generous and warmhearted'
+        users_personality = 'generous and warmhearted'
     elif horoscope_sign == 'virgo':
-        users_personality = 'Modest and Shy'
+        users_personality = 'modest and Shy'
     elif horoscope_sign == 'libra':
-        users_personality = 'Easygoing and sociable'
+        users_personality = 'easygoing and sociable'
     elif horoscope_sign == 'scorpio':
         users_personality = 'Determined and forceful'
     elif horoscope_sign == 'sagittarius':
-        users_personality = 'Intellectual and philosophical'
+        users_personality = 'intellectual and philosophical'
     elif horoscope_sign == 'capricorn':
-        users_personality = 'Practical and prudent'
+        users_personality = 'practical and prudent'
     elif horoscope_sign == 'aquarius':
-        users_personality = 'Friendly and humanitarian'
+        users_personality = 'friendly and humanitarian'
     elif horoscope_sign == 'pisces':
-        users_personality = 'Imaginative and sensitive'
+        users_personality = 'imaginative and sensitive'
 
     
 
@@ -177,9 +177,11 @@ def horoscope_results():
 
     context = {
         'horoscope_sign': horoscope_sign,
-        'personality': users_personality, 
-        'user_name': user_name,
+        'users_personality': users_personality, 
+        'users_name': users_name,
         'lucky_number': lucky_number
+        
+        
     }
 
     return render_template('horoscope_results.html', **context)

@@ -7,15 +7,33 @@
         <!-- Your HTML code goes here! -->
         
         {% block content %}
-        <h1> Your Personality Results!</h1>
-        {% if operator == ' add' %}
-                    <h3>You chose: {{num1}} {{operator}} {{num2}} which equals {{result}}</h3>
-            {% elif operator == 'subtract' %}
-                <h3>You chose: {{num1}} {{operator}} {{num2}} which equals {{result}}</h3>
-            {% elif operator == 'multiply' %}
-                <h3>You chose: {{num1}} {{operator}} {{num2}} which equals {{result}}</h3>
-            {% elif operator == 'divide' %}
-                <h3>You chose: {{num1}} {{operator}} {{num2}} which equals {{result}}</h3>
+            <h1> Your Personality Results!</h1>
+            {% if horoscope_sign == 'aries' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>
+            {% elif horoscope_sign == 'taurus' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>
+            {% elif horoscope_sign == 'gemini' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>    
+            {% elif horoscope_sign == 'cancer' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>           
+            {% elif horoscope_sign == 'leo' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>
+            {% elif horoscope_sign == 'virgo' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>
+            {% elif horoscope_sign == 'libra' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>
+            {% elif horoscope_sign == 'scorpio' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>
+            {% elif horoscope_sign == 'sagittarius' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>    
+            {% elif horoscope_sign == 'capricorn' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>           
+            {% elif horoscope_sign == 'aquarius' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>
+            {% elif horoscope_sign == 'pisces' %}
+                        <h4>{{users_name}}, your sign is {{horoscope_sign}} which means your personality is {{users_personality}} and your lucky number is {{lucky_number}}</h4>
+            
+                    
             {% endif %}
         {% endblock %}
 
