@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 import random
+from random import randint
 
 app = Flask(__name__)
 
@@ -17,39 +18,64 @@ def homepage():
 @app.route('/froyo')
 def choose_froyo():
     """Shows a form to collect the user's Fro-Yo order."""
-    pass
+    return render_template('froyo_form.html')
+    
+   
 
 @app.route('/froyo_results')
 def show_froyo_results():
-    """Shows the user what they ordered from the previous page."""
-    pass
+    users_froyo_flavor = request.args.get('flavor')
+    return f'You ordered {users_froyo_flavor} flavored Fro-Yo!'
 
 @app.route('/favorites')
 def favorites():
     """Shows the user a form to choose their favorite color, animal, and city."""
-    pass
-
+    return """
+    <form action="/favorites_results" method="GET">
+        What is your favorite color? <br/>
+        <input type="text" name="color"><br/>
+        What is your favorite animal?<br/>
+        <input type="text" name= "animal"><br/>
+        What is your favorite city? <br/>
+        <input type="text" name="city" ><br/>
+        <input type="submit" value="Submit!">
+    </form>
+    """
 @app.route('/favorites_results')
 def favorites_results():
     """Shows the user a nice message using their form results."""
-    pass
+    users_fav_color =request.args.get('color')
+    users_fav_animal =request.args.get('animal')
+    users_fav_city = request.args.get('city')
+    return f'Wow, I didnt know {users_fav_color} {users_fav_animal}s lived in {users_fav_city}!'
+    
 
 @app.route('/secret_message')
 def secret_message():
     """Shows the user a form to collect a secret message. Sends the result via
     the POST method to keep it a secret!"""
-    pass
+    return """
+    <form action="/secret_message" method="POST">
+        Enter your secret message <br/>
+        <input type="text" name="message"><br/>
+        <input type="submit" value="Submit!">
+    </form>
+    """
 
 @app.route('/message_results', methods=['POST'])
 def message_results():
     """Shows the user their message, with the letters in sorted order."""
-    pass
+    users_message = request.form.get('message')
+    return f'Here is your secret message! {sort_letters(users_message)}'
+    
+    
 
 @app.route('/calculator')
 def calculator():
     """Shows the user a form to enter 2 numbers and an operation."""
-    return """
-    <form action="/calculator_results" method="GET">
+    return render_template('calculator_form.html')
+
+    """<form action="/calculator_results" method="GET">
         Please enter 2 numbers and select an operator.<br/><br/>
         <input type="number" name="operand1">
         <select name="operation">
@@ -62,12 +88,32 @@ def calculator():
         <input type="submit" value="Submit!">
     </form>
     """
+    
 
-@app.route('/calculator_results')
+@app.route('/calculator_results/')
 def calculator_results():
     """Shows the user the result of their calculation."""
-    pass
+    num1 = int(request.args.get('operand1'))
+    num2 = int(request.args.get('operand2'))
+    operator = request.args.get('operation')
+        
+    if operator == "add":
+        result = int(num1 + num2)
+    elif operator == "subtract":
+        result = int(num1 - num2)
+    elif operator == "multiply":
+        result = int(num1 * num2)
+    elif operator == "divide":
+        result = int(num1 / num2)
+    
+    context = {
+        'num1' : num1,
+        'num2' : num2,
+        'operator' : operator,
+        'result' : result
+    }
 
+    return render_template('calculator_results.html')
 
 HOROSCOPE_PERSONALITIES = {
     'aries': 'Adventurous and energetic',
@@ -94,7 +140,7 @@ def horoscope_results():
     """Shows the user the result for their chosen horoscope."""
 
     # TODO: Get the sign the user entered in the form, based on their birthday
-    horoscope_sign = ''
+    horoscope_sign = request.args.get('number1')
 
     # TODO: Look up the user's personality in the HOROSCOPE_PERSONALITIES
     # dictionary based on what the user entered
@@ -114,3 +160,4 @@ def horoscope_results():
 if __name__ == '__main__':
     app.config['ENV'] = 'development'
     app.run(debug=True)
+
