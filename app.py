@@ -140,6 +140,7 @@ def horoscope_results():
     """Shows the user the result for their chosen horoscope."""
 
     # TODO: Get the sign the user entered in the form, based on their birthday
+    user_name = request.args.get('user_name')
     horoscope_sign = request.args.get('horoscope_sign')
 
     # TODO: Look up the user's personality in the HOROSCOPE_PERSONALITIES
@@ -177,6 +178,7 @@ def horoscope_results():
     context = {
         'horoscope_sign': horoscope_sign,
         'personality': users_personality, 
+        'user_name': user_name,
         'lucky_number': lucky_number
     }
 
