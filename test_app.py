@@ -115,7 +115,7 @@ class TestApp(unittest.TestCase):
         result_page_text = res.get_data(as_text=True)
         self.assertIn('Ducky', result_page_text)
         self.assertIn('aries', result_page_text)
-        self.assertIn('Adventurous and energetic', result_page_text)
+        self.assertIn('adventurous and energetic', result_page_text)
         self.assertIn('18', result_page_text)
 
     def test_horoscope_taurus(self):
@@ -127,7 +127,7 @@ class TestApp(unittest.TestCase):
         result_page_text = res.get_data(as_text=True)
         self.assertIn('Moxie', result_page_text)
         self.assertIn('taurus', result_page_text.lower())
-        self.assertIn('Patient and reliable', result_page_text)
+        self.assertIn('patient and reliable', result_page_text)
         self.assertIn('31', result_page_text)
 
 

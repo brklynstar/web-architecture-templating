@@ -85,41 +85,41 @@ def calculator():
 @app.route('/calculator_results/')
 def calculator_results():
     """Shows the user the result of their calculation."""
-    num1 = int(request.args.get('operand1'))
-    num2 = int(request.args.get('operand2'))
+    number1 = int(request.args.get('operand1'))
+    number2 = int(request.args.get('operand2'))
     operator = request.args.get('operation')
         
     if operator == "add":
-        result = int(num1 + num2)
+        result = int(number1 + number2)
     elif operator == "subtract":
-        result = int(num1 - num2)
+        result = int(number1 - number2)
     elif operator == "multiply":
-        result = int(num1 * num2)
+        result = int(number1 * number2)
     elif operator == "divide":
-        result = int(num1 / num2)
+        result = int(number1 / number2)
     
     context = {
-        'num1' : num1,
-        'num2' : num2,
+        'number1' : number1,
+        'number2' : number2,
         'operator' : operator,
-        'result' : result
+        'result' : result,
     }
 
     return render_template('calculator_results.html')
 
 HOROSCOPE_PERSONALITIES = {
-    'aries': 'Adventurous and energetic',
-    'taurus': 'Patient and reliable',
-    'gemini': 'Adaptable and versatile',
-    'cancer': 'Emotional and loving',
-    'leo': 'Generous and warmhearted',
-    'virgo': 'Modest and shy',
-    'libra': 'Easygoing and sociable',
-    'scorpio': 'Determined and forceful',
-    'sagittarius': 'Intellectual and philosophical',
-    'capricorn': 'Practical and prudent',
-    'aquarius': 'Friendly and humanitarian',
-    'pisces': 'Imaginative and sensitive'
+    'aries': 'adventurous and energetic',
+    'taurus': 'patient and reliable',
+    'gemini': 'adaptable and versatile',
+    'cancer': 'emotional and loving',
+    'leo': 'generous and warmhearted',
+    'virgo': 'modest and shy',
+    'libra': 'easygoing and sociable',
+    'scorpio': 'determined and forceful',
+    'sagittarius': 'intellectual and philosophical',
+    'capricorn': 'practical and prudent',
+    'aquarius': 'friendly and humanitarian',
+    'pisces': 'imaginative and sensitive'
 }
 
 @app.route('/horoscope')
@@ -138,7 +138,7 @@ def horoscope_results():
     # TODO: Look up the user's personality in the HOROSCOPE_PERSONALITIES
     # dictionary based on what the user entered
     if horoscope_sign == 'aries':
-        users_personality = 'adventerous and Energetic'
+        users_personality = 'adventerous and energetic'
     elif horoscope_sign == 'taurus':
         users_personality = 'patient and reliable'
     elif horoscope_sign == 'gemini':
@@ -148,11 +148,11 @@ def horoscope_results():
     elif horoscope_sign == 'leo':
         users_personality = 'generous and warmhearted'
     elif horoscope_sign == 'virgo':
-        users_personality = 'modest and Shy'
+        users_personality = 'modest and shy'
     elif horoscope_sign == 'libra':
         users_personality = 'easygoing and sociable'
     elif horoscope_sign == 'scorpio':
-        users_personality = 'Determined and forceful'
+        users_personality = 'determined and forceful'
     elif horoscope_sign == 'sagittarius':
         users_personality = 'intellectual and philosophical'
     elif horoscope_sign == 'capricorn':
@@ -165,13 +165,13 @@ def horoscope_results():
     
 
     # TODO: Generate a random number from 1 to 99
-    lucky_number = randint(1,100)
+    lucky_number = randint(1,99)
 
     context = {
         'horoscope_sign': horoscope_sign,
         'users_personality': users_personality, 
         'users_name': users_name,
-        'lucky_number': lucky_number
+        'lucky_number': lucky_number,
         
     }
 

@@ -3,19 +3,19 @@
     <head>
         <title>Calculator Results</title>
     </head>
+
     <body>
-        <!-- Your HTML code goes here! -->
             
         {% block content %}
-        <h1> Your Calculator Results!</h1>
-            {% if operator == ' add' %}
-                    <h3>You chose: {{num1}} {{operator}} {{num2}} which equals {{result}}</h3>
+            <h1> Your Calculator Results!</h1>
+            {% if operator == 'add' %}
+                <h3>You chose: {{number1}} {{operator}} {{number2}} which equals {{result}}</h3>
             {% elif operator == 'subtract' %}
-                <h3>You chose: {{num1}} {{operator}} {{num2}} which equals {{result}}</h3>
+                <h3>You chose: {{number1}} {{operator}} {{number2}} which equals {{result}}</h3>
             {% elif operator == 'multiply' %}
-                <h3>You chose: {{num1}} {{operator}} {{num2}} which equals {{result}}</h3>
+                <h3>You chose: {{number1}} {{operator}} {{number2}} which equals {{result}}</h3>
             {% elif operator == 'divide' %}
-                <h3>You chose: {{num1}} {{operator}} {{num2}} which equals {{result}}</h3>
+                <h3>You chose: {{number1}} {{operator}} {{number2}} which equals {{result}}</h3>
             {% endif %}
         {% endblock %}
 
