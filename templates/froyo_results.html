@@ -6,10 +6,8 @@
     <body>
         <!-- Your HTML code goes here! -->
 
-
-
-
-
-        
+        {% block content %}
+            <h3>You ordered {{froyo_flavor}} flavored Fro-Yo with {{froyo_toppings}}! </h3>
+        {% endblock %}
     </body>
 </html>

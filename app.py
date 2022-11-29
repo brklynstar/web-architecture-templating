@@ -24,9 +24,14 @@ def choose_froyo():
 
 @app.route('/froyo_results')
 def show_froyo_results():
-    users_froyo_flavor = request.args.get('flavor')
-    return f'You ordered {users_froyo_flavor} flavored Fro-Yo!'
+    context = {
+        'froyo_flavor': request.args.get('flavor'),
+        'froyo_toppings': request.args.get('toppings')
+    }
 
+    return render_template('froyo_results.html', **context)
+
+  
 @app.route('/favorites')
 def favorites():
     """Shows the user a form to choose their favorite color, animal, and city."""
@@ -75,19 +80,6 @@ def calculator():
     """Shows the user a form to enter 2 numbers and an operation."""
     return render_template('calculator_form.html')
 
-    """<form action="/calculator_results" method="GET">
-        Please enter 2 numbers and select an operator.<br/><br/>
-        <input type="number" name="operand1">
-        <select name="operation">
-            <option value="add">+</option>
-            <option value="subtract">-</option>
-            <option value="multiply">*</option>
-            <option value="divide">/</option>
-        </select>
-        <input type="number" name="operand2">
-        <input type="submit" value="Submit!">
-    </form>
-    """
     
 
 @app.route('/calculator_results/')
@@ -180,7 +172,6 @@ def horoscope_results():
         'users_personality': users_personality, 
         'users_name': users_name,
         'lucky_number': lucky_number
-        
         
     }
 
